@@ -1,1 +1,4 @@
-##<center>AUTO-CRITIQUE</center><center>A tractable quantitive evaluation metric for Conditional Image Generation with PixelCNN Decoders</center>
+## Installation instructions
+---
+
+1. Run `pip install -r requirements.txt`
