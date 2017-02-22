@@ -11,4 +11,4 @@ module add CUDA
 
 cd $HOME/class_project
 
-THEANO_FLAGS=mode=FAST_RUN,device=gpu0,floatX=float32 python tools/test_gpu.py
+THEANO_FLAGS=mode=FAST_RUN,device=gpu,floatX=float32 python tools/test_gpu.py
