@@ -1,2 +1,1 @@
-dotenv==0.0.5
 Theano==0.9.0rc1
