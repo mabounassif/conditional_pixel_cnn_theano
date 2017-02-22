@@ -7,8 +7,8 @@
 module load python/3.5.1
 module load openblas/0.2.18
 module load theano/python3.5/0.7.0
+module add CUDA
 
 cd $HOME/class_project
 
-pip install -r requirements.txt
 THEANO_FLAGS=mode=FAST_RUN,device=gpu0,floatX=float32 python tools/test_gpu.py
