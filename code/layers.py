@@ -31,7 +31,19 @@ class Conv2DLayer(Layer):
         self.filter = Conv2DHelper.build_filter(filter_shape, mask_type)
 
         # Setup bias
-        self.bias = Conv2DHelper.build_bias(
+        self.bias = Conv2DHelper.build_bias(filter_shape)
+
+        conv_out = T.nnet.conv2d(input_tensor, self.filter)
+        self.output = conv_out + self.bias
+
+        if activation is not None:
+            if activation == 'relu':
+                self.output = T.nnet.relu(self.output)
+            elif activation == 'tanh':
+                self.output = T.tanh(self.output)
+            else:
+                raise Exception("Activation: {}, is not
+                        implemented".format(activation))
 
 class Conv2DHelper:
     """
@@ -45,5 +57,19 @@ class Conv2DHelper:
         filter_shape: tuple
             A tuple that describes the shape of the filter
             (output_channels, input_channels, filter_width, filter_height)
+        mask_type: string
+            Conv filter mask
         """
         pass
+
+    @classmethod
+    def build_bias(cls, filter_shape):
+        """
+        Builds the bias of the 2D conv layer
+
+        filter_shape: tuple
+            A tuple that describes the shape of the filter
+            (output_channels, input_channels, filter_width, filter_height)
+        """
+        pass
+
